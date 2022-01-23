@@ -27,7 +27,7 @@ namespace ParksLookup.Controllers
 
     // POST api/parks
     [HttpPost]
-    public async Task<ActionResult<Park>> Post(Park park)
+    public async Task<ActionResult<Park>> Post([FromBody]Park park)
     {
       _db.Parks.Add(park);
       await _db.SaveChangesAsync();
@@ -36,7 +36,7 @@ namespace ParksLookup.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Park>> GetPark(int id)
+    public async Task<ActionResult<Park>> GetPark([FromQuery]int id)
     {
         var park = await _db.Parks.FindAsync(id);
 
@@ -49,7 +49,7 @@ namespace ParksLookup.Controllers
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, Park park)
+    public async Task<IActionResult> Put([FromQuery]int id, [FromBody]Park park)
     {
       if (id != park.ParkId)
       {
@@ -82,7 +82,7 @@ namespace ParksLookup.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletePark(int id)
+    public async Task<IActionResult> DeletePark([FromQuery]int id)
     {
       var park = await _db.Parks.FindAsync(id);
       if (park == null)
