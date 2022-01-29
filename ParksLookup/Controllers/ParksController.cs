@@ -18,14 +18,12 @@ namespace ParksLookup.Controllers
       _db = db;
     }
 
-    // GET api/parks
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Park>>> Get()
     {
       return await _db.Parks.ToListAsync();
     }
 
-    // POST api/parks
     [HttpPost]
     public async Task<ActionResult<Park>> Post([FromBody]Park park)
     {
@@ -36,7 +34,7 @@ namespace ParksLookup.Controllers
     }
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Park>> GetPark([FromQuery]int id)
+    public async Task<ActionResult<Park>> GetPark(int id)
     {
         var park = await _db.Parks.FindAsync(id);
 
@@ -49,7 +47,7 @@ namespace ParksLookup.Controllers
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put([FromQuery]int id, [FromBody]Park park)
+    public async Task<IActionResult> Put(int id, Park park)
     {
       if (id != park.ParkId)
       {
@@ -82,7 +80,7 @@ namespace ParksLookup.Controllers
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeletePark([FromQuery]int id)
+    public async Task<IActionResult> DeletePark(int id)
     {
       var park = await _db.Parks.FindAsync(id);
       if (park == null)
