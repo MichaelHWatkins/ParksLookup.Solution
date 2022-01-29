@@ -15,7 +15,6 @@
 * _Entity Framework Core_
 
 
-
 ## Description
 
 _{Tells you about national and state parks.}_
@@ -47,12 +46,26 @@ _Note: when using the commands listed above, do not include the quotation marks.
 
 Explore the API endpoints in Postman or a browser.
 
+## Endpoints
+
+Base URL: https://localhost:5000
+
+GET /api/park
+POST /api/park
+GET /api/park/{id}
+PUT /api/park/{id}
+DELETE /api/park/{id}
+
+## Example Query
+
+https://localhost:5000/api/park
+
 ## Known Bugs
 
-* _No known bugs_
+* _Swagger will not run on the PUT and DELETE routes_
 
 ## Contact Information
-__
+_michaelhugheswatkins@gmail.com_
 
 ## License
 _MIT License: https://opensource.org/licenses/MIT_
